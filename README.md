@@ -1,2 +1,2 @@
-# DST-Recipe
-饥荒菜谱小程序
+# DST-Helper
+饥荒助手小程序
