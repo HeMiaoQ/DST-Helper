@@ -1,4 +1,4 @@
-export const RECIPE = [
+const RECIPE = [
   {
     id: 0,
     introduce: '',
@@ -10,3 +10,5 @@ export const RECIPE = [
     ]
   }
 ]
+
+export default RECIPE

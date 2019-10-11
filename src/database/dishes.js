@@ -385,9 +385,9 @@ const DISHES = [
   },
   {
     id: 33,
-    Picture: 'F_banaba_pop',
+    Picture: 'F_banana_pop',
     Name: '香蕉船',
-    enName: 'Banaba Pop',
+    enName: 'Banana Pop',
     property: {
       Health: 20,
       Hunger: 12,
@@ -481,7 +481,7 @@ const DISHES = [
   },
   {
     id: 41,
-    Picture: 'F_jelly-O_pop',
+    Picture: 'F_jelly_O_pop',
     Name: '水母冻',
     enName: 'Jelly-O Pop',
     property: {
@@ -553,7 +553,7 @@ const DISHES = [
   },
   {
     id: 47,
-    Picture: 'F_surf_\'n\'_turf',
+    Picture: 'F_surf_n_turf',
     Name: '海鲜牛排套餐',
     enName: 'Surf \'n\' Turf',
     property: {
