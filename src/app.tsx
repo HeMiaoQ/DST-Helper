@@ -2,31 +2,41 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/recipe/index'
 
 import './app.scss'
-
-// 如果需要在 h5 环境中开启 React Devtools
-// 取消以下注释：
-// if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
-//   require('nerv-devtools')
-// }
+import './assets/iconfont/iconfont.css'
+import './taroUI.scss'
 
 class App extends Component {
 
-  /**
-   * 指定config的类型声明为: Taro.Config
-   *
-   * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
-   * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
-   * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
-   */
   config: Config = {
     pages: [
-      'pages/recipe/index'
+      'pages/recipe/index',
+      'pages/CMD/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: '饥荒小助手',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: "#626567",
+      selectedColor: "#d41919",
+      backgroundColor: "#FBFBFB",
+      borderStyle: "white",
+      list: [
+        {
+        pagePath: "pages/recipe/index",
+        text: "菜谱",
+        // iconPath: "./assets/images/tabBar/home_off.png",
+        // selectedIconPath: "./assets/images/tabBar/home_on.png"
+        },
+        {
+          pagePath: "pages/CMD/index",
+          text: "命令",
+          // iconPath: "./assets/images/tabBar/sell.png",
+          // selectedIconPath: "./assets/images/tabBar/sell.png"
+        }
+      ]
     }
   }
 

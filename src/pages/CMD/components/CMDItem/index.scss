@@ -1,0 +1,22 @@
+.icon-ic-arrowx1 {
+  font-size: 50px;
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.cmd-wrap {
+  padding: 20px 50px;
+}
+.cmd-title-wrap {
+  border-bottom: 1px solid #F6F6F6;
+}
+.cmd-text-wrap {
+  background: #F6F6F6;
+}
+.cmd-text {
+  max-width: calc(100% - 120px);
+  word-break: break-all;
+}
+button[size=mini] {
+  padding: 0 20px;
+}

@@ -1,0 +1,23 @@
+{
+  "id": "1474026",
+  "name": "饥荒",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6897881",
+      "name": "ic-arrow2 copy@2x",
+      "font_class": "ic-arrowcopyx",
+      "unicode": "e6ab",
+      "unicode_decimal": 59051
+    },
+    {
+      "icon_id": "6897883",
+      "name": "ic-arrow2@2x",
+      "font_class": "ic-arrowx1",
+      "unicode": "e6ad",
+      "unicode_decimal": 59053
+    }
+  ]
+}
