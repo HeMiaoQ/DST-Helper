@@ -28,12 +28,16 @@ const CMD = [
   { name: '停止饥饿', cmd: 'ThePlayer.components.hungerPause(true)' },
   { name: '设置攻击伤害倍数', cmd: 'ThePlayer.components.combat.damagemultiplier = value' },
   { name: '吴迪变身（1变回来）', cmd: 'ThePlayer.components.beavernessSetPercent(0/1)' },
-  { name: '删除指针物品', cmd: 'c_select().Remove()' },
+  { name: '删除指针物品', cmd: 'TheInput:GetWorldEntityUnderMouse():Remove()' },
   { name: '跳过一个时期（白天变晚上）', cmd: 'TheWorldPushEvent(ms_nextphase)' },
-  // { name: '', cmd: ' },
-  // { name: '', cmd: ' },
-  // { name: '', cmd: ' },
-  // { name: '', cmd: ' },
+  { name: '跳过一天', cmd: 'TheWorldPushEvent(ms_nextcycle)' },
+  { name: '跳到某个季节', cmd: 'TheWorldPushEvent(ms_setseason, summer)' },
+  { name: '下雨', cmd: 'TheWorldPushEvent(ms_forceprecipitation)' },
+  { name: '停雨', cmd: 'TheWorldPushEvent(ms_forceprecipitation, false)' },
+  { name: '指针处闪电', cmd: 'TheWorldPushEvent(ms_sendlightningstrike, ConsoleWorldPosition())' },
+  { name: '指针处流星袭击', cmd: 'c_spawn(shadowmeteor, 1)' },
+  { name: '重置全部世界', cmd: 'c_reset()' },
+  { name: '回档，空参数回档一天', cmd: 'c_rollback(count)' }
 ]
 
 const MATERIALS = [
