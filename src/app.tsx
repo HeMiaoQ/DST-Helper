@@ -1,5 +1,5 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import Index from './pages/recipe/index'
+import Index from './pages/dishes/index'
 
 import './app.scss'
 import './assets/iconfont/iconfont.css'
@@ -9,6 +9,7 @@ class App extends Component {
 
   config: Config = {
     pages: [
+      'pages/dishes/index',
       'pages/recipe/index',
       'pages/CMD/index'
     ],
@@ -25,10 +26,10 @@ class App extends Component {
       borderStyle: "white",
       list: [
         {
-        pagePath: "pages/recipe/index",
+        pagePath: "pages/dishes/index",
         text: "菜谱",
-        // iconPath: "./assets/images/tabBar/home_off.png",
-        // selectedIconPath: "./assets/images/tabBar/home_on.png"
+        // iconPath: "./assets/image/smartpot.png",
+        // selectedIconPath: "./assets/image/smartpot.png"
         },
         {
           pagePath: "pages/CMD/index",

@@ -1,8 +1,16 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
+
 import DISHES from '../../database/dishes'
 import dishPictures from '../../assets/image/dishes'
+import foodsPicture from '../../assets/image/foods'
+import { health, hunger, sanity } from '../../assets/image'
+
+interface forbidItem {
+  desc: string,
+  name: string
+}
 
 interface dishItem {
   id: number,
@@ -14,30 +22,26 @@ interface dishItem {
     Hunger: number,
     Sanity: number,
     Perish: number
-  }
+  },
+  recipe: string[],
+  forbid: forbidItem[],
+  Introduce: string
 }
 
 interface State {
-  dishesList: dishItem[]
+  dishesData: dishItem
 }
 
 export default class Index extends Component<{}, State> {
   config: Config = {
-    navigationBarTitleText: '饥荒小助手'
+    navigationBarTitleText: '菜谱'
   }
 
-  constructor () {
-    super()
-    this.state = {
-      dishesList: []
-    } as State
-  }
+  state = {
+    dishesData: DISHES[0]
+  } as State
 
-  componentWillMount () {
-    this.setState({
-      dishesList: DISHES
-    })
-  }
+  componentWillMount () {}
 
   componentDidMount () {}
 
@@ -47,50 +51,30 @@ export default class Index extends Component<{}, State> {
 
   componentDidHide () { }
 
-  sortByProperty = (property, rule) => {
-    this.setState({
-      dishesList: DISHES.sort(this.compare(property, rule))
-    })
-  }
-
-  compare (property, rule) {
-    return function (a, b) {
-      let value1 = a.property[property]
-      let value2 = b.property[property]
-      if (rule === 'up') {
-        return value1 - value2
-      } else {
-        return value2 - value1
-      }
-    }
-  }
-
   render () {
+    const { dishesData } = this.state
     return (
       <View className='index'>
-        <View className='sort-bar-wrap'>
-          {/*<View className='sort-bar' onClick={this.sortByProperty.bind(this, 'health','up')}>health升序</View>*/}
-          {/*<View className='sort-bar' onClick={this.sortByProperty.bind(this, 'health','down')}>health降序</View>*/}
-          {/*<View className='sort-bar' onClick={this.sortByProperty.bind(this, 'hunger','up')}>hunger升序</View>*/}
-          {/*<View className='sort-bar' onClick={this.sortByProperty.bind(this, 'hunger','down')}>hunger降序</View>*/}
-        </View>
-        <View>
-          {this.state.dishesList.map((item, index) => (
-            <View key={index} className='flex justify-content-start'>
-              <Image src={dishPictures[item.Picture]} className='dishes-img'></Image>
-              {/*<Image src='/static/image/dishes/F_shark_fin_soup.png'></Image>*/}
-              {/*<Image src={`../../assets/image/dishes/${item.Picture}.png`}></Image>*/}
-              <View>
-                <View className='flex'>
-                  <Text>{item.property.Health}</Text>
-                  <Text>{item.property.Hunger}</Text>
-                  <Text>{item.property.Sanity}</Text>
-                  <Text>{item.property.Perish}</Text>
-                </View>
-                <View>{item.Name}{item.enName}</View>
+        <View className='dishes-info'>
+          <Image src={dishPictures[dishesData.Picture]}></Image>
+          <View>
+            <View>中文名</View>
+            <View>英文名</View>
+            <View className='dishes-property flex justify-content-start'>
+              <View className='flex justify-content-start'>
+                <Image src={health}></Image>
+                <View>10</View>
+              </View>
+              <View className='flex justify-content-start'>
+                <Image src={hunger}></Image>
+                <View>10</View>
+              </View>
+              <View className='flex justify-content-start'>
+                <Image src={sanity}></Image>
+                <View>10</View>
               </View>
             </View>
-          ))}
+          </View>
         </View>
       </View>
     )
