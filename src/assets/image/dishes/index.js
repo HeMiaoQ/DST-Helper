@@ -45,6 +45,8 @@ import F_turkey_dinner from './F_turkey_dinner.png'
 import F_unagi from './F_unagi.png'
 import F_waffles from './F_waffles.png'
 import F_wet_goop from './F_wet_goop.png'
+import F_wobster_bisque from './F_wobster_bisque.png'
+import F_wobster_dinner from './F_wobster_dinner.png'
 
 const dishPictures = {
   F_bacon_and_eggs,
@@ -93,7 +95,9 @@ const dishPictures = {
   F_turkey_dinner,
   F_unagi,
   F_waffles,
-  F_wet_goop
+  F_wet_goop,
+  F_wobster_bisque,
+  F_wobster_dinner
 }
 
 export default dishPictures
