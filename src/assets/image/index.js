@@ -13,9 +13,9 @@
 import health from './health.jpg'
 import hunger from './hunger.jpg'
 import sanity from './sanity.jpg'
-import smartpot from './smartpot.png.jpg'
-import CP_CrockPot from './CP_CrockPot.png.jpg'
-import CP_PortableCrockPot from './CP_PortableCrockPot.png.jpg'
+import smartpot from './smartpot.png'
+import CP_CrockPot from './CP_CrockPot.png'
+import CP_PortableCrockPot from './CP_PortableCrockPot.png'
 
 export {
   health,
