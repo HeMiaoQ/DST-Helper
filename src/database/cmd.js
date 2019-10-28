@@ -28,7 +28,7 @@ const CMD = [
   { name: '停止饥饿', cmd: 'ThePlayer.components.hungerPause(true)' },
   { name: '设置攻击伤害倍数', cmd: 'ThePlayer.components.combat.damagemultiplier = value' },
   { name: '吴迪变身（1变回来）', cmd: 'ThePlayer.components.beavernessSetPercent(0/1)' },
-  { name: '删除指针物品', cmd: 'TheInput:GetWorldEntityUnderMouse():Remove()' },
+  { name: '删除指针物品', cmd: 'c_select():Remove()' },
   { name: '跳过一个时期（白天变晚上）', cmd: 'TheWorldPushEvent(ms_nextphase)' },
   { name: '跳过一天', cmd: 'TheWorldPushEvent(ms_nextcycle)' },
   { name: '跳到某个季节', cmd: 'TheWorldPushEvent(ms_setseason, summer)' },
