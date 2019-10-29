@@ -1,13 +1,14 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import { AtButton } from 'taro-ui'
+import { View, Image } from '@tarojs/components'
 import './index.scss'
 
+import { imgBg, unknown } from '../../../assets/image/index'
+
 interface Props {
-  data: {
-    name: string,
-    cmd: string
-  }
+  className?: string,
+  img: string,
+  width?: number,
+  height?: number,
 }
 
 export default class extends Component<Props, {}> {
@@ -15,34 +16,23 @@ export default class extends Component<Props, {}> {
     addGlobalClass: true
   }
 
-  state = {
-    showDetail: false
-  }
-
-  handleTitleClick = (): void => {
-    this.setState({
-      showDetail: !this.state.showDetail
-    })
-  }
-
-  copy = (): void => {
-    wx.setClipboardData({
-      data: this.props.data.cmd
-    })
+  static defaultProps = {
+    className: '',
+    img: unknown,
+    width: 200,
+    height: 200
   }
 
   render () {
-    const iconRotate: string = this.state.showDetail ? 'rotate-180' : ''
+    const className = `img-wrap ${this.props.className}`
+    const style = {
+      width: Taro.pxTransform(this.props.width as number),
+      height: Taro.pxTransform(this.props.height as number)
+    }
     return (
-      <View>
-        <View className='cmd-wrap cmd-title-wrap flex justify-content-between' onClick={this.handleTitleClick.bind(this)}>
-          <View>{this.props.data.name}</View>
-          <View className={`iconfont icon-ic-arrowx1 ${iconRotate}`}></View>
-        </View>
-        {this.state.showDetail && <View className='cmd-wrap cmd-text-wrap flex justify-content-between'>
-          <View className='cmd-text'>{this.props.data.cmd}</View>
-          <AtButton size='small' type='primary' onClick={this.copy.bind(this)}>复制</AtButton>
-        </View>}
+      <View className={className} style={style}>
+        <Image className='img-bg' src={imgBg}></Image>
+        <Image className='content-img' src={this.props.img}></Image>
       </View>
     )
   }

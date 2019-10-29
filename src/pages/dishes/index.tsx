@@ -2,8 +2,11 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
 
+import { ImgWrap } from '../components/index'
+
 import DISHES from '../../database/dishes'
 import dishPictures from '../../assets/image/dishes/index'
+import { health, hunger, sanity, notFresh, CP_CrockPot } from '../../assets/image/index'
 
 interface dishItem {
   id: number,
@@ -68,19 +71,44 @@ export default class Index extends Component<{}, State> {
   render () {
     return (
       <View className='index'>
-        <View>
-          <View onClick={this.sortByProperty.bind(this, 'Health', 'up')}>Health up</View>
-          <View onClick={this.sortByProperty.bind(this, 'Health', 'down')}>Health down</View>
-          <View onClick={this.sortByProperty.bind(this, 'Hunger', 'up')}>Hunger up</View>
-          <View onClick={this.sortByProperty.bind(this, 'Hunger', 'down')}>Hunger down</View>
-          <View onClick={this.sortByProperty.bind(this, 'Sanity', 'up')}>Sanity up</View>
-          <View onClick={this.sortByProperty.bind(this, 'Sanity', 'down')}>Sanity down</View>
+        <View className='sort-tab flex justify-content-start'>
+          <Image className='smart-pot' src={CP_CrockPot}></Image>
+          <View className='sort-item-wrap flex justify-content-start'>
+            <View className='sort-item flex'>
+              <Image className='property-img' src={health}></Image>
+              <View className='flex justify-content-start flex-flow-column'>
+                <View className='iconfont icon-TopArrow' onClick={this.sortByProperty.bind(this, 'Health', 'up')}></View>
+                <View className='iconfont icon-arrow-down' onClick={this.sortByProperty.bind(this, 'Health', 'down')}></View>
+              </View>
+            </View>
+            <View className='sort-item flex'>
+              <Image className='property-img' src={hunger}></Image>
+              <View className='flex justify-content-start flex-flow-column'>
+                <View className='iconfont icon-TopArrow' onClick={this.sortByProperty.bind(this, 'Hunger', 'up')}></View>
+                <View className='iconfont icon-arrow-down' onClick={this.sortByProperty.bind(this, 'Hunger', 'down')}></View>
+              </View>
+            </View>
+            <View className='sort-item flex'>
+              <Image className='property-img' src={sanity}></Image>
+              <View className='flex justify-content-start flex-flow-column'>
+                <View className='iconfont icon-TopArrow' onClick={this.sortByProperty.bind(this, 'Sanity', 'up')}></View>
+                <View className='iconfont icon-arrow-down' onClick={this.sortByProperty.bind(this, 'Sanity', 'down')}></View>
+              </View>
+            </View>
+            <View className='sort-item flex'>
+              <Image className='property-img' src={notFresh}></Image>
+              <View className='flex justify-content-start flex-flow-column'>
+                <View className='iconfont icon-TopArrow' onClick={this.sortByProperty.bind(this, 'Perish', 'up')}></View>
+                <View className='iconfont icon-arrow-down' onClick={this.sortByProperty.bind(this, 'Perish', 'down')}></View>
+              </View>
+            </View>
+          </View>
         </View>
 
         <View>
           {this.state.dishesList.map((item, index) => (
             <View key={index} className='flex justify-content-start' onClick={this.showRecipe.bind(this, item.id)}>
-              <Image src={dishPictures[item.Picture]} className='dishes-img'></Image>
+              <ImgWrap img={dishPictures[item.Picture]}></ImgWrap>
               <View className='info-wrap'>
                 <View className='dishes-name'>{item.Name}</View>
                 <View className='dishes-name'>{item.enName}</View>

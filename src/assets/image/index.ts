@@ -17,6 +17,8 @@ import notFresh from './notFresh.png'
 import smartpot from './smartpot.png'
 import CP_CrockPot from './CP_CrockPot.png'
 import portablePot from './portablePot.png'
+import imgBg from './img_bg.png'
+import unknown from './unknown.png'
 
 export {
   health,
@@ -25,5 +27,7 @@ export {
   notFresh,
   smartpot,
   CP_CrockPot,
-  portablePot
+  portablePot,
+  imgBg,
+  unknown
 }

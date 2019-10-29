@@ -1,6 +1,8 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Image, Text } from '@tarojs/components'
+import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
+
+import { ImgWrap } from '../components/index'
 
 import DISHES from '../../database/dishes'
 import dishPictures from '../../assets/image/dishes/index'
@@ -61,7 +63,7 @@ export default class Index extends Component<{}, State> {
     return (
       <View className='index'>
         <View className='dishes-info flex justify-content-start'>
-          <Image className='dish-img' src={dishPictures[dishesData.Picture]}></Image>
+          <ImgWrap width={235} height={235} img={dishPictures[dishesData.Picture]}></ImgWrap>
           <View>
             <View>{dishesData.Name}</View>
             <View>{dishesData.enName}</View>
@@ -88,10 +90,10 @@ export default class Index extends Component<{}, State> {
         <View>
           {dishesData.recipe.map((item, index) => (
             <View key={index} className='flex justify-content-start'>
-              <Image src={foodsPicture[item[0]]}></Image>
-              <Image src={foodsPicture[item[1]]}></Image>
-              <Image src={foodsPicture[item[2]]}></Image>
-              <Image src={foodsPicture[item[3]]}></Image>
+              <ImgWrap width={120} height={120} img={foodsPicture[item[0]]}></ImgWrap>
+              <ImgWrap width={120} height={120} img={foodsPicture[item[1]]}></ImgWrap>
+              <ImgWrap width={120} height={120} img={foodsPicture[item[2]]}></ImgWrap>
+              <ImgWrap width={120} height={120} img={foodsPicture[item[3]]}></ImgWrap>
             </View>
           ))}
         </View>
@@ -101,7 +103,7 @@ export default class Index extends Component<{}, State> {
             {dishesData.forbid.map((item, index) => (
               <View key={index} className='flex justify-content-start'>
                 <Text>{item.desc}</Text>
-                <Image src={foodsPicture[item.name]}></Image>
+                <Image className='no-bg-img' src={foodsPicture[item.name]}></Image>
               </View>
             ))}
           </View>}
