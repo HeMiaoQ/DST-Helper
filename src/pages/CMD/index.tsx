@@ -2,7 +2,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import './index.scss'
 
 import { AtTabs, AtTabsPane  } from 'taro-ui'
-import { CMDItem } from './components'
+import { CMDItem } from './components/index'
 
 import { TAB_LIST, CMD, MATERIALS, TOOL, WEAPON, WARE, BUILDING, FOOD, PLANT, ANIMAL } from '../../database/cmd'
 

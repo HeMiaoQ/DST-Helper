@@ -3,7 +3,7 @@ import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
 
 import DISHES from '../../database/dishes'
-import dishPictures from '../../assets/image/dishes'
+import dishPictures from '../../assets/image/dishes/index'
 
 interface dishItem {
   id: number,
@@ -29,7 +29,7 @@ export default class Index extends Component<{}, State> {
 
   state = {
     dishesList: DISHES.sort(this.compare('Health', 'down'))
-  } as State
+  }
 
   componentWillMount () {}
 
@@ -59,6 +59,12 @@ export default class Index extends Component<{}, State> {
     }
   }
 
+  showRecipe = (id): void => {
+    Taro.navigateTo({
+      url: `/pages/recipe/index?id=${id}`
+    })
+  }
+
   render () {
     return (
       <View className='index'>
@@ -73,7 +79,7 @@ export default class Index extends Component<{}, State> {
 
         <View>
           {this.state.dishesList.map((item, index) => (
-            <View key={index} className='flex justify-content-start'>
+            <View key={index} className='flex justify-content-start' onClick={this.showRecipe.bind(this, item.id)}>
               <Image src={dishPictures[item.Picture]} className='dishes-img'></Image>
               <View className='info-wrap'>
                 <View className='dishes-name'>{item.Name}</View>

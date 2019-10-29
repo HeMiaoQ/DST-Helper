@@ -26,7 +26,7 @@ export default class extends Component<Props, {}> {
   }
 
   copy = (): void => {
-    wx.setClipboardData({
+    Taro.setClipboardData({
       data: this.props.data.cmd
     })
   }
@@ -41,7 +41,7 @@ export default class extends Component<Props, {}> {
         </View>
         {this.state.showDetail && <View className='cmd-wrap cmd-text-wrap flex justify-content-between'>
           <View className='cmd-text'>{this.props.data.cmd}</View>
-          <AtButton size='small' type='primary' onClick={this.copy.bind(this)}>复制</AtButton>
+          <AtButton className='mini-button' size='small' type='primary' onClick={this.copy.bind(this)}>复制</AtButton>
         </View>}
       </View>
     )

@@ -689,7 +689,7 @@ const DISHES = [
       Perish: 10
     },
     recipe: [
-      ['F_roe', 'FC_Vegetables', '', '']
+      ['F_roe', 'FC_Vegetables', '', ''],
       ['F_cooked_roe', 'F_cooked_roe', 'F_cooked_roe', 'FC_Vegetables']
     ],
     forbid: [],
