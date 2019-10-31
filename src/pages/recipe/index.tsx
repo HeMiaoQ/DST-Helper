@@ -7,7 +7,7 @@ import { ImgWrap } from '../components/index'
 import DISHES from '../../database/dishes'
 import dishPictures from '../../assets/image/dishes/index'
 import foodsPicture from '../../assets/image/foods'
-import { health, hunger, sanity, notFresh } from '../../assets/image/index'
+import { health, hunger, sanity, perish } from '../../assets/image/index'
 
 interface forbidItem {
   desc: string,
@@ -81,7 +81,7 @@ export default class Index extends Component<{}, State> {
                 <View>{dishesData.property.Sanity}</View>
               </View>
               <View className='property-item'>
-                <Image className='property-img' src={notFresh}></Image>
+                <Image className='property-img' src={perish}></Image>
                 <View>{dishesData.property.Perish}</View>
               </View>
             </View>

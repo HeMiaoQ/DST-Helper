@@ -15,6 +15,13 @@ export default class extends Component<Props, {}> {
     addGlobalClass: true
   }
 
+  static defaultProps = {
+    data: {
+      name: '',
+      cmd: ''
+    }
+  }
+
   state = {
     showDetail: false
   }

@@ -6,7 +6,7 @@ import { ImgWrap } from '../components/index'
 
 import DISHES from '../../database/dishes'
 import dishPictures from '../../assets/image/dishes/index'
-import { health, hunger, sanity, notFresh, CP_CrockPot } from '../../assets/image/index'
+import { health, hunger, sanity, perish, CP_CrockPot, tabBg } from '../../assets/image/index'
 
 interface dishItem {
   id: number,
@@ -22,7 +22,8 @@ interface dishItem {
 }
 
 interface State {
-  dishesList: dishItem[]
+  dishesList: dishItem[],
+  sortType: string
 }
 
 export default class Index extends Component<{}, State> {
@@ -31,7 +32,8 @@ export default class Index extends Component<{}, State> {
   }
 
   state = {
-    dishesList: DISHES.sort(this.compare('Health', 'down'))
+    dishesList: DISHES.sort(this.compare('Health', 'down')),
+    sortType: 'HealthDown'
   }
 
   componentWillMount () {}
@@ -46,7 +48,8 @@ export default class Index extends Component<{}, State> {
 
   sortByProperty = (property, rule) => {
     this.setState({
-      dishesList: DISHES.sort(this.compare(property, rule))
+      dishesList: DISHES.sort(this.compare(property, rule)),
+      sortType: `${property}${rule}`
     })
   }
 
@@ -54,7 +57,7 @@ export default class Index extends Component<{}, State> {
     return function (a, b) {
       let value1 = a.property[property]
       let value2 = b.property[property]
-      if (rule === 'up') {
+      if (rule === 'Up') {
         return value1 - value2
       } else {
         return value2 - value1
@@ -69,37 +72,48 @@ export default class Index extends Component<{}, State> {
   }
 
   render () {
+    const classHealthUp = `iconfont icon-arrow-up ${this.state.sortType === 'HealthUp' ? 'checked' : ''}`
+    const classHealthDown = `iconfont icon-arrow-down ${this.state.sortType === 'HealthDown' ? 'checked' : ''}`
+    const classHungerUp = `iconfont icon-arrow-up ${this.state.sortType === 'HungerUp' ? 'checked' : ''}`
+    const classHungerDown = `iconfont icon-arrow-down ${this.state.sortType === 'HungerDown' ? 'checked' : ''}`
+    const classSanityUp = `iconfont icon-arrow-up ${this.state.sortType === 'SanityUp' ? 'checked' : ''}`
+    const classSanityDown = `iconfont icon-arrow-down ${this.state.sortType === 'SanityDown' ? 'checked' : ''}`
+    const classPerishUp = `iconfont icon-arrow-up ${this.state.sortType === 'PerishUp' ? 'checked' : ''}`
+    const classPerishDown = `iconfont icon-arrow-down ${this.state.sortType === 'PerishDown' ? 'checked' : ''}`
     return (
       <View className='index'>
-        <View className='sort-tab flex justify-content-start'>
-          <Image className='smart-pot' src={CP_CrockPot}></Image>
-          <View className='sort-item-wrap flex justify-content-start'>
-            <View className='sort-item flex'>
-              <Image className='property-img' src={health}></Image>
-              <View className='flex justify-content-start flex-flow-column'>
-                <View className='iconfont icon-TopArrow' onClick={this.sortByProperty.bind(this, 'Health', 'up')}></View>
-                <View className='iconfont icon-arrow-down' onClick={this.sortByProperty.bind(this, 'Health', 'down')}></View>
+        <View className='tab-wrap'>
+          <Image className='tab-bg' src={tabBg}></Image>
+          <View className='sort-tab flex justify-content-start'>
+            <Image className='smart-pot' src={CP_CrockPot}></Image>
+            <View className='sort-item-wrap flex justify-content-start'>
+              <View className='sort-item flex'>
+                <Image className='property-img' src={health}></Image>
+                <View className='flex justify-content-start flex-flow-column'>
+                  <View className={classHealthUp} onClick={this.sortByProperty.bind(this, 'Health', 'Up')}></View>
+                  <View className={classHealthDown} onClick={this.sortByProperty.bind(this, 'Health', 'Down')}></View>
+                </View>
               </View>
-            </View>
-            <View className='sort-item flex'>
-              <Image className='property-img' src={hunger}></Image>
-              <View className='flex justify-content-start flex-flow-column'>
-                <View className='iconfont icon-TopArrow' onClick={this.sortByProperty.bind(this, 'Hunger', 'up')}></View>
-                <View className='iconfont icon-arrow-down' onClick={this.sortByProperty.bind(this, 'Hunger', 'down')}></View>
+              <View className='sort-item flex'>
+                <Image className='property-img' src={hunger}></Image>
+                <View className='flex justify-content-start flex-flow-column'>
+                  <View className={classHungerUp} onClick={this.sortByProperty.bind(this, 'Hunger', 'Up')}></View>
+                  <View className={classHungerDown} onClick={this.sortByProperty.bind(this, 'Hunger', 'Down')}></View>
+                </View>
               </View>
-            </View>
-            <View className='sort-item flex'>
-              <Image className='property-img' src={sanity}></Image>
-              <View className='flex justify-content-start flex-flow-column'>
-                <View className='iconfont icon-TopArrow' onClick={this.sortByProperty.bind(this, 'Sanity', 'up')}></View>
-                <View className='iconfont icon-arrow-down' onClick={this.sortByProperty.bind(this, 'Sanity', 'down')}></View>
+              <View className='sort-item flex'>
+                <Image className='property-img' src={sanity}></Image>
+                <View className='flex justify-content-start flex-flow-column'>
+                  <View className={classSanityUp} onClick={this.sortByProperty.bind(this, 'Sanity', 'Up')}></View>
+                  <View className={classSanityDown} onClick={this.sortByProperty.bind(this, 'Sanity', 'Down')}></View>
+                </View>
               </View>
-            </View>
-            <View className='sort-item flex'>
-              <Image className='property-img' src={notFresh}></Image>
-              <View className='flex justify-content-start flex-flow-column'>
-                <View className='iconfont icon-TopArrow' onClick={this.sortByProperty.bind(this, 'Perish', 'up')}></View>
-                <View className='iconfont icon-arrow-down' onClick={this.sortByProperty.bind(this, 'Perish', 'down')}></View>
+              <View className='sort-item flex'>
+                <Image className='property-img' src={perish}></Image>
+                <View className='flex justify-content-start flex-flow-column'>
+                  <View className={classPerishUp} onClick={this.sortByProperty.bind(this, 'Perish', 'Up')}></View>
+                  <View className={classPerishDown} onClick={this.sortByProperty.bind(this, 'Perish', 'Down')}></View>
+                </View>
               </View>
             </View>
           </View>
@@ -111,12 +125,12 @@ export default class Index extends Component<{}, State> {
               <ImgWrap img={dishPictures[item.Picture]}></ImgWrap>
               <View className='info-wrap'>
                 <View className='dishes-name'>{item.Name}</View>
-                <View className='dishes-name'>{item.enName}</View>
+                <View className='dishes-enName'>{item.enName}</View>
                 <View className='flex property-wrap'>
-                  <Text>{item.property.Health}</Text>
-                  <Text>{item.property.Hunger}</Text>
-                  <Text>{item.property.Sanity}</Text>
-                  <Text>{item.property.Perish}</Text>
+                  <Text className='health-text'>{item.property.Health}</Text>
+                  <Text className='hunger-text'>{item.property.Hunger}</Text>
+                  <Text className='sanity-text'>{item.property.Sanity}</Text>
+                  <Text className='perish-text'>{item.property.Perish}</Text>
                 </View>
               </View>
             </View>
