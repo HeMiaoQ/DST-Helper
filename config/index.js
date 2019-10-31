@@ -1,5 +1,5 @@
 const config = {
-  projectName: 'taro-template',
+  projectName: 'DST-Helper',
   date: '2019-10-10',
   designWidth: 750,
   deviceRatio: {
